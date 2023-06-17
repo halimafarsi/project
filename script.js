@@ -62,16 +62,24 @@ function dibujarLineas(data) {
 }
 
 // Cargar los datos del CSV y dibujar las líneas
-d3.csv("test.csv").then(function(data) {
-  dibujarLineas(data);
-});
+d3.csv("test.csv")
+  .then(function(data) {
+    dibujarLineas(data);
+  })
+  .catch(function(error) {
+    console.error("Error al cargar el archivo CSV:", error);
+  });
 
 // Función para filtrar los datos y actualizar las líneas
 function filtrarDatos(asunto) {
-  d3.csv("test.csv").then(function(data) {
-    const datosFiltrados = data.filter(d => asunto === "" || d.Asunto === asunto);
-    dibujarLineas(datosFiltrados);
-  });
+  d3.csv("test.csv")
+    .then(function(data) {
+      const datosFiltrados = data.filter(d => asunto === "" || d.Asunto === asunto);
+      dibujarLineas(datosFiltrados);
+    })
+    .catch(function(error) {
+      console.error("Error al cargar los datos", error);
+    });
 }
 
 const asuntoSelect = document.getElementById("asuntoSelect");
