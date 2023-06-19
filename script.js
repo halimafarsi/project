@@ -2,7 +2,7 @@
 const width = 800;
 const height = 600;
 
-// Crear el mapa con Leaflet
+// Visualización con Leaflet
 const map = L.map("map").setView([46.5, 2.5], 5);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
@@ -20,8 +20,8 @@ const svgLayer = L.svgOverlay(svg.node(), map);
 // Capa de líneas
 const lineLayer = L.geoJSON().addTo(map);
 
-// Función para dibujar las líneas con D3.js
-function dibujarLineas(data) {
+// Función para dibujar las líneas con D3.js + Parsear los datos geográficos + linelayer con la info
+function dibujarLineas(data, añoSeleccionado) {
   lineLayer.clearLayers();
 
   data.forEach(function(d) {
@@ -40,16 +40,19 @@ function dibujarLineas(data) {
         asunto: d.Asunto,
         fecha: d.Fecha,
         remitente: d.Remitente,
-        receptor: d.Receptor
+        receptor: d.Receptor,
+        IDCarta: d.IdCarta
       }
     };
 
-    lineLayer.addData(lineFeature);
+    if (parseInt(d.Fecha) <= parseInt(añoSeleccionado)) {
+      lineLayer.addData(lineFeature);
+    }
   });
 
   lineLayer.setStyle({
     color: "blue",
-    weight: 2
+    weight: 6
   });
 
   lineLayer.eachLayer(function(layer) {
@@ -57,6 +60,8 @@ function dibujarLineas(data) {
       <h4>${layer.feature.properties.asunto}</h4>
       <p>Remitente: ${layer.feature.properties.remitente}</p>
       <p>Receptor: ${layer.feature.properties.receptor}</p>
+      <p>Fecha: ${layer.feature.properties.fecha}</p>
+      <p>Id de la carta: ${layer.feature.properties.IDCarta}</p>
     `);
   });
 }
@@ -64,27 +69,31 @@ function dibujarLineas(data) {
 // Cargar los datos del CSV y dibujar las líneas
 d3.csv("test.csv")
   .then(function(data) {
-    dibujarLineas(data);
+    // Configuración por defecto
   })
   .catch(function(error) {
     console.error("Error al cargar el archivo CSV:", error);
   });
 
 // Función para filtrar los datos y actualizar las líneas
-function filtrarDatos(asunto) {
+function filtrarDatos(asunto, añoSeleccionado) {
   d3.csv("test.csv")
     .then(function(data) {
-      const datosFiltrados = data.filter(d => asunto === "" || d.Asunto === asunto);
-      dibujarLineas(datosFiltrados);
+      const datosFiltrados = data.filter(d => (asunto === "" || d.Asunto === asunto));
+      dibujarLineas(datosFiltrados, añoSeleccionado);
     })
     .catch(function(error) {
-      console.error("Error al cargar los datos", error);
+      console.error("Error al cargar el archivo CSV:", error);
     });
 }
 
 const asuntoSelect = document.getElementById("asuntoSelect");
+const slider = document.getElementById("slider");
 
-asuntoSelect.addEventListener("change", function() {
+document.getElementById("mostrarViajeBtn").addEventListener("click", function() {
   const asuntoSeleccionado = asuntoSelect.value;
-  filtrarDatos(asuntoSeleccionado);
+  const añoSeleccionado = slider.value;
+  filtrarDatos(asuntoSeleccionado, añoSeleccionado);
 });
+
+//Función para datos sin lugar de origen o de destino ¿?
