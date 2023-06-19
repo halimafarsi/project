@@ -1,25 +1,76 @@
 #map {
   width: 100%;
-  height: 500px;
+  height: 400px;
 }
 
-#timeline {
-  width: 100%;
-  height: 100px;
-  background-color: #f2f2f2;
+#controls {
   margin-top: 20px;
-  padding: 10px;
+  text-align: center;
 }
 
-.timeline-item {
-  width: 20px;
-  height: 20px;
-  background-color: steelblue;
-  display: inline-block;
-  margin-right: 10px;
+#sliderCaja {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background-color: black;
+  margin-top: 10px;
+  padding: 20px;
+}
+
+#sliderValueMin,
+#sliderValueMax {
+  position: absolute;
+  color: white;
+  font-size: 12px;
+}
+
+#sliderValueMin {
+  left: 0;
+  top: 70%;
+  transform: translateY(-50%);
+}
+
+#sliderValueMax {
+  right: 0;
+  top: 70%;
+  transform: translateY(-50%);
+}
+
+#slider {
+  width: 100%;
+  height: 30%;
+  -webkit-appearance: auto;
+  background-color: white;
+  outline: none;
+  margin: 100;
+  padding: 100;
+}
+
+#slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
   cursor: pointer;
 }
 
-.timeline-item.active {
-  background-color: red;
+#slider::-webkit-slider-thumb:hover {
+  background-color: #fd5c63;
+}
+
+#slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#slider::-moz-range-thumb:hover {
+  background-color: #ccc;
+}
+.sliderLabel {
+  cursor: pointer;
 }
