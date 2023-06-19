@@ -39,6 +39,8 @@ function dibujarLineas(data, añoSeleccionado) {
       properties: {
         asunto: d.Asunto,
         fecha: d.Fecha,
+        Origen: d.Origen,
+        Destino: d.Destino,
         remitente: d.Remitente,
         receptor: d.Receptor,
         IDCarta: d.IdCarta
@@ -60,7 +62,9 @@ function dibujarLineas(data, añoSeleccionado) {
       <h4>${layer.feature.properties.asunto}</h4>
       <p>Remitente: ${layer.feature.properties.remitente}</p>
       <p>Receptor: ${layer.feature.properties.receptor}</p>
-      <p>Fecha: ${layer.feature.properties.fecha}</p>
+      <p>Fecha: ${layer.feature.properties.fecha}</p>      
+      <p> Origen: ${layer.feature.properties.Origen}</p>
+      <p> Destino: ${layer.feature.properties.Destino}</p>
       <p>Id de la carta: ${layer.feature.properties.IDCarta}</p>
     `);
   });
