@@ -1,5 +1,5 @@
-Asunto,Fecha,Origen,Destino,Remitente,Receptor,LatOrigen,LongOrigen,LatDestino,LongDestino,IDCarta
-Reparto de bienes,11-02-1830,Tolosa,Madrid,Maria Micaela,Escolastica,43.1348400,-2.0780100,40.4165000,-3.7025600,d30984
-Reparto de bienes,12-02-1830,Madrid,Bayona,Escolastica,Maria Micaela,40.4165000,-3.7025600,43.4833300,-1.4833300,d30985
-Pension de Viudedad,12-03-1830,Salamanca,Tolosa,Margarita Garce,Escolastica,40.9688200,-5.6638800,43.1348400,-2.0780100,d30986
-Pension de Viudedad,12-07-1830,Tolosa,Murcia,Escolastica,Maria Micaela,43.1348400,-2.0780100,37.9870400,-1.1300400,
+﻿Asunto;Fecha;LatOrigen;LongOrigen;LatDestino;LongDestino;Origen;Destino;Remitente;Receptor;IDCarta
+Pensión de viudedad de Margarita GARCE DE ACEDO;1834-01-24;44.837789;-0.57918;43.1348400;-2.0780100;Burdeos ;Tolosa;ALCIBAR MICHELENA Miguel María;SALAZAR Escolática;Leg. 62, sig 1.31.
+Pensión de viudedad de Margarita GARCE DE ACEDO;1834-06-25;44.837789;-0.57918;43.1348400;-2.0780100;Burdeos ;Tolosa;ALCIBAR MICHELENA Miguel María;SALAZAR Escolática;Leg. 66, sig 1.31.
+Pago de Bienes de la Marquesa de valde-espina;1834-08-27;44.837789;-0.57918;43.1348400;-2.0780100;Burdeos ;Tolosa;ALCIBAR MICHELENA Miguel María;SALAZAR Escolática;Leg. 138, sig 14.50.
+Pago de Bienes de la Marquesa de valde-espina;1834-08-29;43.1348400;-2.0780100;44.837789;-0.57918;Tolosa;Burdeos;SALAZAR Escolática;ALCIBAR MICHELENA Miguel María;Leg. 6973, sig 46.5.
