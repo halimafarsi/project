@@ -54,7 +54,7 @@ function dibujarLineas(data, añoSeleccionado) {
 
   lineLayer.setStyle({
     color: "blue",
-    weight: 6
+    weight: 5
   });
 
   lineLayer.eachLayer(function(layer) {
