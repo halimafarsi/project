@@ -37,7 +37,7 @@ function dibujarLineas(data, añoSeleccionado) {
       type: "Feature",
       geometry: lineData,
       properties: {
-        asunto: d.Asunto,
+        remitente: d.remitente,
         fecha: d.Fecha,
         Origen: d.Origen,
         Destino: d.Destino,
@@ -59,7 +59,7 @@ function dibujarLineas(data, añoSeleccionado) {
 
   lineLayer.eachLayer(function(layer) {
     layer.bindPopup(`
-      <h4>${layer.feature.properties.asunto}</h4>
+      <h4>${layer.feature.properties.remitente}</h4>
       <p>Remitente: ${layer.feature.properties.remitente}</p>
       <p>Receptor: ${layer.feature.properties.receptor}</p>
       <p>Fecha: ${layer.feature.properties.fecha}</p>      
@@ -80,10 +80,10 @@ d3.csv("test.csv")
   });
 
 // Función para filtrar los datos y actualizar las líneas
-function filtrarDatos(asunto, añoSeleccionado) {
+function filtrarDatos(remitente, añoSeleccionado) {
   d3.csv("test.csv")
     .then(function(data) {
-      const datosFiltrados = data.filter(d => (asunto === "" || d.Asunto === asunto));
+      const datosFiltrados = data.filter(d => (remitente === "" || d.Remitente === remitente));
       dibujarLineas(datosFiltrados, añoSeleccionado);
     })
     .catch(function(error) {
@@ -91,13 +91,13 @@ function filtrarDatos(asunto, añoSeleccionado) {
     });
 }
 
-const asuntoSelect = document.getElementById("asuntoSelect");
+const remitenteSelect = document.getElementById("remitenteSelect");
 const slider = document.getElementById("slider");
 
-document.getElementById("mostrarViajeBtn").addEventListener("click", function() {
-  const asuntoSeleccionado = asuntoSelect.value;
+document.getElementById("mostrarBtn").addEventListener("click", function() {
+  const remitenteSeleccionado = remitenteSelect.value;
   const añoSeleccionado = slider.value;
-  filtrarDatos(asuntoSeleccionado, añoSeleccionado);
+  filtrarDatos(remitenteSeleccionado, añoSeleccionado);
 });
 
 //Función para datos sin lugar de origen o de destino ¿?
