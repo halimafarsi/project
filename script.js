@@ -43,7 +43,7 @@ function dibujarLineas(data, añoSeleccionado) {
         Destino: d.Destino,
         remitente: d.Remitente,
         receptor: d.Receptor,
-        IDCarta: d.IdCarta
+        IDCarta: d.IDCarta
       }
     };
 
@@ -53,8 +53,9 @@ function dibujarLineas(data, añoSeleccionado) {
   });
 
   lineLayer.setStyle({
-    color: "blue",
+    color: "green",
     weight: 5
+  
   });
 
   lineLayer.eachLayer(function(layer) {
@@ -90,6 +91,25 @@ function filtrarDatos(remitente, añoSeleccionado) {
       console.error("Error al cargar el archivo CSV:", error);
     });
 }
+function filtrarDatos(remitente, añoSeleccionado) {
+  d3.csv("test.csv")
+    .then(function(data) {
+      let datosFiltrados;
+
+      if (remitente === "Todos") {
+        // Si se selecciona "todos", no aplicamos ningún filtro de remitente
+        datosFiltrados = data;
+      } else {
+        datosFiltrados = data.filter(d => d.Remitente === remitente);
+      }
+
+      dibujarLineas(datosFiltrados, añoSeleccionado);
+    })
+    .catch(function(error) {
+      console.error("Error al cargar TODAS las líneas", error);
+    });
+}
+
 
 const remitenteSelect = document.getElementById("remitenteSelect");
 const slider = document.getElementById("slider");
