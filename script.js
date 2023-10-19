@@ -72,7 +72,7 @@ function dibujarLineas(data, añoSeleccionado) {
 }
 
 // Cargar los datos del CSV y dibujar las líneas
-d3.csv("test.csv")
+d3.csv("DATA.CSV")
   .then(function(data) {
     // Configuración por defecto
   })
@@ -82,7 +82,7 @@ d3.csv("test.csv")
 
 // Función para filtrar los datos y actualizar las líneas
 function filtrarDatos(remitente, añoSeleccionado) {
-  d3.csv("test.csv")
+  d3.csv("DATA.CSV")
     .then(function(data) {
       const datosFiltrados = data.filter(d => (remitente === "" || d.Remitente === remitente));
       dibujarLineas(datosFiltrados, añoSeleccionado);
@@ -92,7 +92,7 @@ function filtrarDatos(remitente, añoSeleccionado) {
     });
 }
 function filtrarDatos(remitente, añoSeleccionado) {
-  d3.csv("test.csv")
+  d3.csv("DATA.CSV")
     .then(function(data) {
       let datosFiltrados;
 
